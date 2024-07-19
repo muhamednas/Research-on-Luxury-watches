@@ -1,0 +1,22 @@
+---
+title: "Job Market Analysis"
+author: "D/ADC/0047"
+date: "2024-07-08"
+output: html_document
+---
+
+```{r}
+itjobs = read.csv("E:/New folder/Data-Science-Job_Listing.csv")
+```
+
+# Remove null values
+```{r}
+y = is.na(itjobs)
+y = options(max.print = 100)
+```
+
+# Remove duplicate rows
+```{r}
+unique(itjobs)
+```
+

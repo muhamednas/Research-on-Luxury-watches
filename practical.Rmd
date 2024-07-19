@@ -1,0 +1,162 @@
+
+```{r}
+author = "D/ADC/0047"
+```
+
+
+
+```{r}
+library(ggplot2)
+
+```
+
+# Import Data
+
+```{r}
+Titanic = read.csv("E:/First sem/rprogramming.RData/titanic.train.csv")
+
+```
+
+# Display first few rows
+
+```{r}
+head(Titanic,5)
+
+```
+
+# Calculate Summary Statistics
+
+```{r}
+summary(Titanic)
+
+```
+
+# Remove null values
+
+```{r message=TRUE}
+x = is.na(Titanic)
+X = options(max.print = 100)
+print(x)
+
+```
+
+# Identify and remove duplicates
+
+```{r}
+unique(Titanic)
+
+```
+
+# Create tables
+
+# Frequency thable for 'survived' variable
+
+```{r}
+survival_freq <- table(Titanic$Survived)
+print("Frequency table for Survived")
+
+```
+
+```{r}
+print(survival_freq)
+```
+# create a barchart for 'survived' variable
+
+```{r}
+ggplot(Titanic, aes(x = Survived)) + geom_bar(color = "black",fill = "white",alpha = 0.7 ) 
+
+```
+# Create a barchart for 'sex' variable
+```{r}
+ggplot(Titanic, aes(x = Sex)) + geom_bar(color = "black",fill = "white",alpha = 0.7 ) 
+
+```
+
+
+# Frequency table for 'Pclass' variable
+
+```{r}
+class_freq <- table(Titanic$Pclass)
+print("Frequency table for Pclass")
+```
+
+```{r}
+print(class_freq)
+```
+
+# Frequency table for 'Sex' variable
+
+```{r}
+gender_freq <- table(Titanic$Sex)
+print("Frequency table for Sex")
+```
+
+```{r}
+print(gender_freq)
+```
+
+# Frequency table for 'Embarked' variable
+
+```{r}
+embarked_freq <- table(Titanic$Embarked)
+print("Frequency table for Embarked")
+```
+
+```{r}
+print(embarked_freq)
+```
+
+
+# Scatter plot
+
+```{r}
+ggplot(Titanic, aes(x = Age, y = Fare, color = factor(Survived))) +
+  geom_point(size = 3, alpha = 0.8) +
+  labs(title = "Scatterplot of Age vs Fare in Titanic Dataset (Colored by Survival)",
+       x = "Age",
+       y = "Fare",
+       color = "Survived") +
+  scale_color_manual(values = c("#FF0000", "#00FF00"), labels = c("No", "Yes"))
+
+```
+# Assuming you have the Titanic dataset loaded
+```{r}
+
+ggplot(Titanic, aes(x = Age)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(title = "Histogram of Age in Titanic Dataset",
+       x = "Age",
+       y = "Frequency")
+
+```
+# Exploratory Data Analysis (EDA)
+
+```{r}
+set.seed(2)
+df <- data.frame(Team = factor(rep(c("A", "B"), each = 200)),
+                 Points = c(rnorm(200, mean = 15, sd = 3),
+                            rnorm(200, mean = 12, sd = 4)))
+ggplot(df, aes(x = Team, y = Points)) +
+  stat_boxplot(geom = "errorbar", width = 0.5) +
+  geom_boxplot(color = "red")
+```
+
+
+# Cross-Tabulation and Contingency Tables
+```{r}
+crs_tab = table(Titanic$Sex,Titanic$Survived)
+```
+```{r}
+print(crs_tab)
+```
+
+
+
+
+
+
+
+
+
+
+
